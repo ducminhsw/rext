@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { cn } from "@/lib/utils";
+
+import { NavigationBar } from "@/components/navigation-bar";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(inter.className, "dark flex flex-1 justify-center")}>
+        <div className="w-full max-w-[1026px]">
+          <NavigationBar />
+          <main>{children}</main>
+        </div>
+      </body>
     </html>
   );
 }
